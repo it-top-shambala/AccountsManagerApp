@@ -11,15 +11,20 @@
         DataContext="{Binding RelativeSource={RelativeSource Self}}">
     
     <Window.CommandBindings>
-        <CommandBinding Command="GoToPage" Executed="LogIn"/>
-        <CommandBinding Command="Close" Executed="Close"/>
+        <CommandBinding Command="GoToPage" 
+                        Executed="LogIn" />
+        <CommandBinding Command="Close" 
+                        Executed="Close"/>
     </Window.CommandBindings>
     
     <Window.InputBindings>
-        <KeyBinding Key="Enter" Command="GoToPage"/>
-        <KeyBinding Key="Escape" Command="Close"/>
+        <KeyBinding Key="Enter" 
+                    Command="GoToPage" />
+        <KeyBinding Key="Escape" 
+                    Command="Close"/>
         
-        <MouseBinding MouseAction="MiddleDoubleClick" Command="Close"/>
+        <MouseBinding MouseAction="MiddleDoubleClick" 
+                      Command="Close"/>
     </Window.InputBindings>
     
     <Window.Resources>
@@ -44,7 +49,7 @@
                         Grid.Column="1"
                         Content="{StaticResource ImageButtonClose}"
                         Style="{StaticResource Style_Close}"
-                        Click="Close"/>
+                        Command="Close"/>
             </Grid>
             <!-- /HEADER -->
             

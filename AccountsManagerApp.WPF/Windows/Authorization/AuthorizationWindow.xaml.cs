@@ -50,6 +50,4 @@ public partial class AuthorizationWindow : Window
         Input_Login.Clear();
         Input_Password.Clear();
     }
-    
-    
 }
