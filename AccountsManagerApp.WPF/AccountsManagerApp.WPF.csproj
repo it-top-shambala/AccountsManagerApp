@@ -7,4 +7,8 @@
         <UseWPF>true</UseWPF>
     </PropertyGroup>
 
+    <ItemGroup>
+      <Resource Include="Assets\button_close.png" />
+    </ItemGroup>
+
 </Project>
