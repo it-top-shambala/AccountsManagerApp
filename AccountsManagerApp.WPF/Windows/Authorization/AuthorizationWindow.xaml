@@ -73,7 +73,7 @@
                                Content="_Password"
                                Target="{Binding ElementName=Input_Password}"
                                Style="{StaticResource Style_Label}"/>
-                        <PasswordBox x:Name="Input_Password"
+                        <TextBox x:Name="Input_Password"
                                  Style="{StaticResource Style_InputPassword}"/>
                     </StackPanel>
                     
@@ -81,12 +81,45 @@
                                 HorizontalAlignment="Center">
                         <Button x:Name="Button_LogIn"
                                 Content="LogIn"
-                                Style="{StaticResource Style_Button_LogIn}"
-                                Command="GoToPage"/>
+                                Command="GoToPage">
+                            <Button.Resources>
+                                <Style TargetType="{x:Type Button}"
+                                       BasedOn="{StaticResource Style_Button_LogIn}">
+                                    <Style.Triggers>
+                                        <DataTrigger Binding="{Binding ElementName=Input_Login, Path=Text}"
+                                                     Value="">
+                                            <Setter Property="IsEnabled" Value="False"/>
+                                        </DataTrigger>
+                                        <DataTrigger Binding="{Binding ElementName=Input_Password, Path=Text}"
+                                                     Value="">
+                                            <Setter Property="IsEnabled" Value="False"/>
+                                        </DataTrigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </Button.Resources>
+                        </Button>
                         <Button x:Name="Button_Clear"
                                 Content="Clear"
-                                Style="{StaticResource Style_Button_Clear}"
-                                Click="Clear"/>
+                                Click="Clear">
+                            <Button.Resources>
+                                <Style TargetType="{x:Type Button}"
+                                       BasedOn="{StaticResource Style_Button_Clear}">
+                                    <Style.Triggers>
+                                        <MultiDataTrigger>
+                                            <MultiDataTrigger.Conditions>
+                                                <Condition Binding="{Binding ElementName=Input_Login, Path=Text}"
+                                                           Value=""/>
+                                                <Condition Binding="{Binding ElementName=Input_Password, Path=Text}"
+                                                           Value=""/>
+                                            </MultiDataTrigger.Conditions>
+                                            <MultiDataTrigger.Setters>
+                                                <Setter Property="IsEnabled" Value="False"/>
+                                            </MultiDataTrigger.Setters>
+                                        </MultiDataTrigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </Button.Resources>
+                        </Button>
                     </StackPanel>
                 </StackPanel>
             </StackPanel>
