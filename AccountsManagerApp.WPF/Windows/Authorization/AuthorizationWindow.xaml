@@ -1,0 +1,84 @@
+﻿<Window x:Class="AccountsManagerApp.WPF.Authorization.AuthorizationWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:local="clr-namespace:AccountsManagerApp.WPF.Authorization"
+        mc:Ignorable="d"
+        Title="{StaticResource AppTitle}" 
+        Height="250" Width="500"
+        WindowState="Normal" WindowStartupLocation="CenterScreen" 
+        WindowStyle="None" ResizeMode="NoResize">
+    
+    <Window.Resources>
+        <ResourceDictionary Source="AuthorizationWindowStyle.xaml"/>
+    </Window.Resources>
+    
+    <Border Style="{StaticResource Style_Border}"
+            MouseLeftButtonDown="Border_OnMouseLeftButtonDown">
+        <DockPanel LastChildFill="True">
+            <!-- HEADER -->
+            <Grid DockPanel.Dock="Top">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="4*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                
+                <TextBlock Grid.Column="0"
+                           Text="{StaticResource AppTitle}"
+                           Style="{StaticResource Style_WindowTitle}"/>
+                
+                <Button x:Name="Button_Close"
+                        Grid.Column="1"
+                        Content="{StaticResource ImageButtonClose}"
+                        Style="{StaticResource Style_Close}"
+                        Click="Button_Close_OnClick"/>
+            </Grid>
+            <!-- /HEADER -->
+            
+            <!-- STATUS BAR -->
+            <StatusBar x:Name="StatusBar" 
+                       DockPanel.Dock="Bottom">
+                <TextBlock x:Name="Status"/>
+            </StatusBar>
+            <!-- /STATUS BAR -->
+            
+            <!-- BODY -->
+            <StackPanel HorizontalAlignment="Center">
+                <TextBlock Text="Авторизация"
+                           Style="{StaticResource Style_Title}"/>
+                <StackPanel>
+                    <StackPanel Orientation="Horizontal">
+                        <Label x:Name="Label_Login"
+                               Content="Login"
+                               Target="{Binding ElementName=Input_Login}"
+                               Style="{StaticResource Style_Label}"/>
+                        <TextBox x:Name="Input_Login"
+                                 Style="{StaticResource Style_Input}"/>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal">
+                        <Label x:Name="Label_Password"
+                               Content="Password"
+                               Target="{Binding ElementName=Input_Password}"
+                               Style="{StaticResource Style_Label}"/>
+                        <PasswordBox x:Name="Input_Password"
+                                 Style="{StaticResource Style_InputPassword}"/>
+                    </StackPanel>
+                    
+                    <StackPanel Orientation="Horizontal"
+                                HorizontalAlignment="Center">
+                        <Button x:Name="Button_LogIn"
+                                Content="LogIn"
+                                Style="{StaticResource Style_Button_LogIn}"
+                                Click="Button_LogIn_OnClick"/>
+                        <Button x:Name="Button_Clear"
+                                Content="Clear"
+                                Style="{StaticResource Style_Button_Clear}"
+                                Click="Button_Clear_OnClick"/>
+                    </StackPanel>
+                </StackPanel>
+            </StackPanel>
+            <!-- /BODY -->
+        </DockPanel>
+    </Border>
+</Window>
