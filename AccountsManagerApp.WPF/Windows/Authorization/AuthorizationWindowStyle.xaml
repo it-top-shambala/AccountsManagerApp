@@ -47,7 +47,7 @@
             <Style x:Key="Style_InputPassword" TargetType="{x:Type PasswordBox}"
                    BasedOn="{StaticResource Style_Default}">
                 <Setter Property="Width" Value="275" />
-                <Setter Property="PasswordChar" Value=" "/>
+                <Setter Property="PasswordChar" Value="+"/>
             </Style>
             
             <Style x:Key="Style_Button" TargetType="{x:Type Button}"

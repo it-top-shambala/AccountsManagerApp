@@ -1,10 +1,9 @@
 ﻿using System.ComponentModel;
 using System.Windows;
-using System.Windows.Controls;
 using System.Windows.Input;
 using AccountsManagerApp.WPF.Windows.Administrator;
 
-namespace AccountsManagerApp.WPF.Authorization;
+namespace AccountsManagerApp.WPF.Windows.Authorization;
 
 public partial class AuthorizationWindow : Window
 {
@@ -33,22 +32,24 @@ public partial class AuthorizationWindow : Window
         this.DragMove();
     }
 
-    private void Button_Close_OnClick(object sender, RoutedEventArgs e)
+    private void Close(object sender, RoutedEventArgs e)
     {
         this.Closing += WindowClosing;
         this.Close();
     }
 
-    private void Button_LogIn_OnClick(object sender, RoutedEventArgs e)
+    private void LogIn(object sender, RoutedEventArgs e)
     {
         var administratorWindow = new AdministratorWindow();
         administratorWindow.Show();
         this.Close();
     }
 
-    private void Button_Clear_OnClick(object sender, RoutedEventArgs e)
+    private void Clear(object sender, RoutedEventArgs e)
     {
         Input_Login.Clear();
         Input_Password.Clear();
     }
+    
+    
 }
