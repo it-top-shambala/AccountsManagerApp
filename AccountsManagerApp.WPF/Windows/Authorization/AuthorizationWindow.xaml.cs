@@ -1,12 +1,17 @@
 ﻿using System.ComponentModel;
+using System.Linq;
+using System.Text;
 using System.Windows;
+using System.Windows.Controls;
 using System.Windows.Input;
 using AccountsManagerApp.WPF.Windows.Administrator;
+using AccountsManagerApp.WPF.Windows.User;
 
 namespace AccountsManagerApp.WPF.Windows.Authorization;
 
 public partial class AuthorizationWindow : Window
 {
+    private string _password;
     public AuthorizationWindow()
     {
         InitializeComponent();
@@ -40,14 +45,58 @@ public partial class AuthorizationWindow : Window
 
     private void LogIn(object sender, RoutedEventArgs e)
     {
-        var administratorWindow = new AdministratorWindow();
-        administratorWindow.Show();
-        this.Close();
+        var login = Input_Login.Text;
+        var password = _password;
+        
+        
+        switch (login)
+        {
+            case "admin" when password == "12345":
+            {
+                var administratorWindow = new AdministratorWindow();
+                administratorWindow.Show();
+                this.Close();
+                break;
+            }
+            case "user" when password == "123":
+            {
+                var userWindow = new UserWindow();
+                userWindow.Show();
+                this.Close();
+                break;
+            }
+            default:
+                MessageBox.Show(
+                    caption: Application.Current.Resources["AppTitle"]?.ToString(),
+                    messageBoxText: "Вы ввели неверные данные",
+                    button: MessageBoxButton.OK,
+                    icon: MessageBoxImage.Error
+                );
+                break;
+        }
     }
 
     private void Clear(object sender, RoutedEventArgs e)
     {
         Input_Login.Clear();
         Input_Password.Clear();
+        _password = "";
+    }
+
+    private void Input_Password_OnTextChanged(object sender, TextChangedEventArgs e)
+    {
+        if (Input_Password.Text.Length == 0) return;
+        
+        var length = Input_Password.Text.Length;
+        _password += Input_Password.Text[(length - 1)..];
+        var builder = "";
+        for (int i = 0; i < length; i++)
+        {
+            builder += '+';
+        }
+
+        Input_Password.Text = builder;
+        Input_Password.CaretIndex = length;
+        _password = _password.Trim('+');
     }
 }

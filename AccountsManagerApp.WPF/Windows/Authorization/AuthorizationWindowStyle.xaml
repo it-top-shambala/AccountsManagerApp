@@ -6,8 +6,8 @@
         <ResourceDictionary>
             <Style x:Key="Style_Border" TargetType="{x:Type Border}">
                 <Setter Property="BorderThickness" Value="3"/>
-                <Setter Property="BorderBrush" Value="{StaticResource BackgroundColor}"/>
-                <Setter Property="Background" Value="{StaticResource BackgroundColor}"/>
+                <Setter Property="BorderBrush" Value="{StaticResource BackgroundColorWindow}"/>
+                <Setter Property="Background" Value="{StaticResource BackgroundColorWindow}"/>
             </Style>
             
             <!-- HEADER -->
@@ -36,25 +36,20 @@
             </Style>
             
             <Style x:Key="Style_Label" TargetType="{x:Type Label}"
-                   BasedOn="{StaticResource Style_Default}">
-                <Setter Property="Width" Value="75" />
+                   BasedOn="{StaticResource Style_Label_Default}">
+                <!-- -->
             </Style>
             
             <Style x:Key="Style_Input" TargetType="{x:Type TextBox}"
-                   BasedOn="{StaticResource Style_Default}">
-                <Setter Property="Width" Value="275" />
+                   BasedOn="{StaticResource Style_Input_Default}">
+                <!-- -->
             </Style>
+            
             <Style x:Key="Style_InputPassword" TargetType="{x:Type TextBox}"
                    BasedOn="{StaticResource Style_Default}">
                 <Setter Property="Width" Value="275" />
-                <!--<Setter Property="PasswordChar" Value="+"/>-->
             </Style>
             
-            <Style x:Key="Style_Button" TargetType="{x:Type Button}"
-                   BasedOn="{StaticResource Style_Default}">
-                <Setter Property="Width" Value="75"/>
-                <Setter Property="Foreground" Value="White"/>
-            </Style>
             <Style x:Key="Style_Button_LogIn" TargetType="{x:Type Button}"
                    BasedOn="{StaticResource Style_Button}">
                 <Setter Property="Background" Value="DarkGreen"/>

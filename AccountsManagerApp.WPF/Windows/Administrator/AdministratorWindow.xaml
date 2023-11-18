@@ -5,8 +5,147 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:local="clr-namespace:AccountsManagerApp.WPF.Windows.Administrator"
         mc:Ignorable="d"
-        Title="AdministratorWindow" Height="450" Width="800">
+        Title="{StaticResource AppTitle}"
+        Height="450" Width="800">
+
+    <Window.Resources>
+        <ResourceDictionary Source="AdministratorWindowStyle.xaml" />
+    </Window.Resources>
+
     <Grid>
-        
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="3*" />
+        </Grid.ColumnDefinitions>
+
+        <ListBox x:Name="AccountList"
+                 Grid.Column="0"
+                 ItemsSource="">
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition Width="Auto" />
+                        </Grid.ColumnDefinitions>
+
+                        <TextBlock Grid.Column="0"
+                                   Text="" />
+                        <TextBlock Grid.Column="1"
+                                   Text="" />
+                        <TextBlock Grid.Column="2"
+                                   Text="" />
+                    </Grid>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
+
+        <StackPanel x:Name="AccountInfo"
+                    Grid.Column="1">
+            <StackPanel Orientation="Horizontal">
+                <Label x:Name="Label_Login"
+                       Content="_Login"
+                       Target="{Binding ElementName=Input_Login}"
+                       Style="{StaticResource Style_Label}" />
+                <TextBox x:Name="Input_Login"
+                         IsEnabled="False"
+                         Style="{StaticResource Style_Input}" />
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <Label x:Name="Label_Password"
+                       Content="_Password"
+                       Target="{Binding ElementName=Input_Password}"
+                       Style="{StaticResource Style_Label}" />
+                <TextBox x:Name="Input_Password"
+                         Style="{StaticResource Style_Input}" />
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <Label x:Name="Label_Name"
+                       Content="_Name"
+                       Target="{Binding ElementName=Input_Name}"
+                       Style="{StaticResource Style_Label}" />
+                <TextBox x:Name="Input_Name"
+                         IsEnabled="False"
+                         Style="{StaticResource Style_Input}" />
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <Label x:Name="Label_Email"
+                       Content="_Email"
+                       Target="{Binding ElementName=Input_Email}"
+                       Style="{StaticResource Style_Label}" />
+                <TextBox x:Name="Input_Email"
+                         Style="{StaticResource Style_Input}" />
+            </StackPanel>
+            <StackPanel Orientation="Horizontal"
+                        HorizontalAlignment="Center">
+                <Button x:Name="Button_Save"
+                        Content="Save"
+                        Command="Save">
+                    <Button.Resources>
+                        <Style TargetType="{x:Type Button}"
+                               BasedOn="{StaticResource Style_Button_Save}">
+                            <Style.Triggers>
+                                <DataTrigger Binding="{Binding ElementName=Input_Login, Path=Text}"
+                                             Value="">
+                                    <Setter Property="IsEnabled" Value="False" />
+                                </DataTrigger>
+                                <DataTrigger Binding="{Binding ElementName=Input_Password, Path=Text}"
+                                             Value="">
+                                    <Setter Property="IsEnabled" Value="False" />
+                                </DataTrigger>
+                                <DataTrigger Binding="{Binding ElementName=Input_Name, Path=Text}"
+                                             Value="">
+                                    <Setter Property="IsEnabled" Value="False" />
+                                </DataTrigger>
+                                <DataTrigger Binding="{Binding ElementName=Input_Email, Path=Text}"
+                                             Value="">
+                                    <Setter Property="IsEnabled" Value="False" />
+                                </DataTrigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Button.Resources>
+                </Button>
+                <Button x:Name="Button_Clear"
+                        Content="Clear">
+                    <Button.Resources>
+                        <Style TargetType="{x:Type Button}"
+                               BasedOn="{StaticResource Style_Button_Clear}">
+                            <Style.Triggers>
+                                <MultiDataTrigger>
+                                    <MultiDataTrigger.Conditions>
+                                        <Condition Binding="{Binding ElementName=Input_Login, Path=Text}"
+                                                   Value="" />
+                                        <Condition Binding="{Binding ElementName=Input_Password, Path=Text}"
+                                                   Value="" />
+                                        <Condition Binding="{Binding ElementName=Input_Name, Path=Text}"
+                                                   Value="" />
+                                        <Condition Binding="{Binding ElementName=Input_Email, Path=Text}"
+                                                   Value="" />
+                                    </MultiDataTrigger.Conditions>
+                                    <MultiDataTrigger.Setters>
+                                        <Setter Property="IsEnabled" Value="False" />
+                                    </MultiDataTrigger.Setters>
+                                </MultiDataTrigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Button.Resources>
+                </Button>
+                <Button x:Name="Button_Delete"
+                        Content="Delete">
+                    <Button.Resources>
+                        <Style TargetType="{x:Type Button}"
+                               BasedOn="{StaticResource Style_Button_Delete}">
+                            <Style.Triggers>
+                                <DataTrigger Binding="{Binding ElementName=Input_Login, Path=Text}"
+                                             Value="">
+                                    <Setter Property="IsEnabled" Value="False" />
+                                </DataTrigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Button.Resources>
+                </Button>
+            </StackPanel>
+        </StackPanel>
     </Grid>
 </Window>

@@ -11,4 +11,12 @@
       <Resource Include="Assets\button_close.png" />
     </ItemGroup>
 
+    <ItemGroup>
+      <Page Update="Components\InputComponent\InputComponent.xaml">
+        <Generator>MSBuild:Compile</Generator>
+        <XamlRuntime>Wpf</XamlRuntime>
+        <SubType>Designer</SubType>
+      </Page>
+    </ItemGroup>
+
 </Project>
