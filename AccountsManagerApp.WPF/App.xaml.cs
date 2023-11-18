@@ -1,17 +1,22 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Configuration;
-using System.Data;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using System.IO;
 using System.Windows;
+using AccountsManagerApp.AccountsManager;
+using AccountsManagerApp.DbLibrary;
+using Microsoft.Extensions.Configuration;
 
 namespace AccountsManagerApp.WPF
 {
-    /// <summary>
-    /// Interaction logic for App.xaml
-    /// </summary>
     public partial class App : Application
     {
+        public App()
+        {
+            var builder = new ConfigurationBuilder();
+            builder.SetBasePath(Directory.GetCurrentDirectory());
+            builder.AddJsonFile("appsettings.json");
+            var config = builder.Build();
+            var connectionString = config.GetConnectionString("DefaultConnection");
+            
+            Resources.Add("Context", new AccountManager(new AccountContext(connectionString)));
+        }
     }
 }

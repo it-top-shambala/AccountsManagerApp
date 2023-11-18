@@ -1,9 +1,12 @@
-﻿using System.ComponentModel;
+﻿using System;
+using System.ComponentModel;
 using System.Linq;
-using System.Text;
+using System.Net.Mime;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
+using AccountsManagerApp.AccountsManager;
+using AccountsManagerApp.Models;
 using AccountsManagerApp.WPF.Windows.Administrator;
 using AccountsManagerApp.WPF.Windows.User;
 
@@ -12,8 +15,12 @@ namespace AccountsManagerApp.WPF.Windows.Authorization;
 public partial class AuthorizationWindow : Window
 {
     private string _password;
+    private readonly AccountManager _accountManager;
+    
     public AuthorizationWindow()
     {
+        _accountManager = (AccountManager)Application.Current.Resources["Context"];
+        
         InitializeComponent();
     }
 
@@ -47,25 +54,24 @@ public partial class AuthorizationWindow : Window
     {
         var login = Input_Login.Text;
         var password = _password;
-        
-        
-        switch (login)
+
+        var accounts = _accountManager.GetAll();
+        var account = accounts.SingleOrDefault(a => a.Login == login && a.Password == password);
+
+        switch (account?.Role)
         {
-            case "admin" when password == "12345":
-            {
-                var administratorWindow = new AdministratorWindow();
-                administratorWindow.Show();
-                this.Close();
-                break;
-            }
-            case "user" when password == "123":
-            {
+            case AccountRole.User:
                 var userWindow = new UserWindow();
                 userWindow.Show();
                 this.Close();
                 break;
-            }
-            default:
+            case AccountRole.Admin:
+                var administratorWindow = new AdministratorWindow();
+                administratorWindow.Show();
+                this.Close();
+                break;
+            case AccountRole.Unknown:
+            case null:
                 MessageBox.Show(
                     caption: Application.Current.Resources["AppTitle"]?.ToString(),
                     messageBoxText: "Вы ввели неверные данные",

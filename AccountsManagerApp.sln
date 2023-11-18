@@ -2,6 +2,12 @@
 Microsoft Visual Studio Solution File, Format Version 12.00
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AccountsManagerApp.WPF", "AccountsManagerApp.WPF\AccountsManagerApp.WPF.csproj", "{E5A221A1-C003-4660-A14F-B5D763636477}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AccountsManagerApp.DbLibrary", "AccountsManagerApp.DbLibrary\AccountsManagerApp.DbLibrary.csproj", "{9D09DA02-DAE2-48CC-B345-7529E6DFF9EC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AccountsManagerApp.AccountsManager", "AccountsManagerApp.AccountsManager\AccountsManagerApp.AccountsManager.csproj", "{F22FC33B-4BBC-48D7-87C2-EAE7FADE73A1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AccountsManagerApp.Models", "AccountsManagerApp.Models\AccountsManagerApp.Models.csproj", "{E7A4358A-2F03-4748-88E9-FD164A2CE92E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -12,5 +18,17 @@ Global
 		{E5A221A1-C003-4660-A14F-B5D763636477}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E5A221A1-C003-4660-A14F-B5D763636477}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E5A221A1-C003-4660-A14F-B5D763636477}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9D09DA02-DAE2-48CC-B345-7529E6DFF9EC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9D09DA02-DAE2-48CC-B345-7529E6DFF9EC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9D09DA02-DAE2-48CC-B345-7529E6DFF9EC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9D09DA02-DAE2-48CC-B345-7529E6DFF9EC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F22FC33B-4BBC-48D7-87C2-EAE7FADE73A1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F22FC33B-4BBC-48D7-87C2-EAE7FADE73A1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F22FC33B-4BBC-48D7-87C2-EAE7FADE73A1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F22FC33B-4BBC-48D7-87C2-EAE7FADE73A1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E7A4358A-2F03-4748-88E9-FD164A2CE92E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E7A4358A-2F03-4748-88E9-FD164A2CE92E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E7A4358A-2F03-4748-88E9-FD164A2CE92E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E7A4358A-2F03-4748-88E9-FD164A2CE92E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

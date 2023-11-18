@@ -32,4 +32,9 @@
         <Setter Property="Width" Value="{StaticResource DefaultWidth}"/>
         <Setter Property="Foreground" Value="{StaticResource ForegroundColorButton}"/>
     </Style>
+    
+    <Style x:Key="Style_Text_Default" TargetType="{x:Type TextBlock}">
+        <Setter Property="Margin" Value="{StaticResource DefaultMargin}"/>
+        <Setter Property="Padding" Value="{StaticResource DefaultPadding}"/>
+    </Style>
 </ResourceDictionary>

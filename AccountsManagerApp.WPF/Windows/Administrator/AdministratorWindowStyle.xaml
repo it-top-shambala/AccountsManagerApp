@@ -4,7 +4,28 @@
         <ResourceDictionary Source="../../DefaultStyle.xaml"/>
         
         <ResourceDictionary>
+            <Style x:Key="Style_Label" TargetType="{x:Type Label}"
+                   BasedOn="{StaticResource Style_Label_Default}">
+                <!-- -->
+            </Style>
             
+            <Style x:Key="Style_Input" TargetType="{x:Type TextBox}"
+                   BasedOn="{StaticResource Style_Input_Default}">
+                <!-- -->
+            </Style>
+            
+            <Style x:Key="Style_Button_Save" TargetType="{x:Type Button}"
+                   BasedOn="{StaticResource Style_Button}">
+                <Setter Property="Background" Value="DarkGreen"/>
+            </Style>
+            <Style x:Key="Style_Button_Clear" TargetType="{x:Type Button}"
+                   BasedOn="{StaticResource Style_Button}">
+                <Setter Property="Background" Value="DarkOrange"/>
+            </Style>
+            <Style x:Key="Style_Button_Delete" TargetType="{x:Type Button}"
+                   BasedOn="{StaticResource Style_Button}">
+                <Setter Property="Background" Value="DarkRed"/>
+            </Style>
         </ResourceDictionary>
     </ResourceDictionary.MergedDictionaries>
 </ResourceDictionary>
