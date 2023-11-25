@@ -72,12 +72,7 @@ public partial class AuthorizationWindow : Window
                 break;
             case AccountRole.Unknown:
             case null:
-                MessageBox.Show(
-                    caption: Application.Current.Resources["AppTitle"]?.ToString(),
-                    messageBoxText: "Вы ввели неверные данные",
-                    button: MessageBoxButton.OK,
-                    icon: MessageBoxImage.Error
-                );
+                Message.ErrorMessage("Вы ввели неверные данные");
                 break;
         }
     }

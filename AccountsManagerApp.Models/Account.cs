@@ -16,4 +16,5 @@ public class Account
     public string Email { get; set; }
     public bool IsDelete { get; set; }
     public AccountRole Role { get; set; }
+    public byte[]? Image { get; set; }
 }

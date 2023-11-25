@@ -37,7 +37,16 @@ public class AccountContext : DbContext, ICrud
         var _account = GetById(account.Id);
         if (_account is null) return false;
 
-        _account = account;
+        //_account = account;
+        _account.LastName = account.LastName;
+        _account.FirstName = account.FirstName;
+        _account.Patronymic = account.Patronymic;
+        _account.IsDelete = account.IsDelete;
+        _account.Email = account.Email;
+        _account.Login = account.Login;
+        _account.Password = account.Password;
+        _account.Role = account.Role;
+        _account.Image = account.Image;
         SaveChanges();
         return true;
     }

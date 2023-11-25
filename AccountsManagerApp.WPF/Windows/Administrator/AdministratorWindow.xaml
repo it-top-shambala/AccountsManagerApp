@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:AccountsManagerApp.WPF.Windows.Administrator"
         mc:Ignorable="d"
         Title="{StaticResource AppTitle}"
-        Height="250" Width="600"
+        Height="250" Width="700"
         WindowState="Normal" ResizeMode="NoResize"
         WindowStartupLocation="CenterScreen"
         DataContext="{Binding RelativeSource={RelativeSource Self}}">
@@ -14,11 +14,27 @@
     <Window.Resources>
         <ResourceDictionary Source="AdministratorWindowStyle.xaml" />
     </Window.Resources>
+    
+    <Window.CommandBindings>
+        <CommandBinding Command="Delete" Executed="DeleteAccount"/>
+        <CommandBinding Command="Save" Executed="SaveAccount"/>
+        <CommandBinding Command="Find" Executed="Clear"/>
+        <CommandBinding Command="Open" Executed="OpenPicture"/>
+    </Window.CommandBindings>
+    
+    <Window.InputBindings>
+        <KeyBinding Modifiers="Control" Key="S" 
+                    Command="Save"/>
+        <KeyBinding Modifiers="Control" Key="D" 
+                    Command="Delete"/>
+        <KeyBinding Key="Escape" Command="Find"/>
+    </Window.InputBindings>
 
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*" />
             <ColumnDefinition Width="3*" />
+            <ColumnDefinition Width="*" />
         </Grid.ColumnDefinitions>
 
         <ListBox x:Name="AccountList"
@@ -80,6 +96,15 @@
                 <TextBox x:Name="Input_Email"
                          Style="{StaticResource Style_Input}" />
             </StackPanel>
+            
+            <StackPanel Orientation="Horizontal">
+                <Label x:Name="Label_IsDelete"
+                       Content="_Is delete"
+                       Target="{Binding ElementName=Check_IsDelete}"
+                       Style="{StaticResource Style_Label}" />
+                <CheckBox x:Name="Check_IsDelete" />
+            </StackPanel>
+            
             <StackPanel Orientation="Horizontal"
                         HorizontalAlignment="Center">
                 <Button x:Name="Button_Save"
@@ -110,7 +135,8 @@
                     </Button.Resources>
                 </Button>
                 <Button x:Name="Button_Clear"
-                        Content="Clear">
+                        Content="Clear"
+                        Command="Find">
                     <Button.Resources>
                         <Style TargetType="{x:Type Button}"
                                BasedOn="{StaticResource Style_Button_Clear}">
@@ -135,7 +161,8 @@
                     </Button.Resources>
                 </Button>
                 <Button x:Name="Button_Delete"
-                        Content="Delete">
+                        Content="Delete"
+                        Command="Delete">
                     <Button.Resources>
                         <Style TargetType="{x:Type Button}"
                                BasedOn="{StaticResource Style_Button_Delete}">
@@ -150,5 +177,15 @@
                 </Button>
             </StackPanel>
         </StackPanel>
+        
+        <Grid Grid.Column="2">
+            <StackPanel>
+                <Image x:Name="Image_UserPic" 
+                       Width="50" Height="50"/>
+                <Button x:Name="Button_PictureOpen"
+                        Content="Открыть..."
+                        Command="Open"/>
+            </StackPanel>
+        </Grid>
     </Grid>
 </Window>
